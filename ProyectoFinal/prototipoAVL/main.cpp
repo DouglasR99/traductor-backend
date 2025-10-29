@@ -49,7 +49,7 @@ public:
         return raiz;
     }
 
-    // Función auxiliar para destruir el árbol
+    // Funciï¿½n auxiliar para destruir el ï¿½rbol
     void destruirArbol(NodoAVL* nodo) {
         if (nodo) {
             destruirArbol(nodo->izquierdo);
@@ -70,13 +70,13 @@ public:
     // Abre el archivo en modo de apertura para agregar al final
     ofstream archivo(rutaCompleta, ios::app);
 
-    // Verifica si el archivo se abrió correctamente
+    // Verifica si el archivo se abriï¿½ correctamente
     if (archivo.is_open()) {
         // Escribe las palabras en el archivo
         archivo << espanol << " " << ingles << endl;
-        // Cierra el archivo después de escribir
+        // Cierra el archivo despuï¿½s de escribir
         archivo.close();
-        // Muestra un mensaje de éxito
+        // Muestra un mensaje de ï¿½xito
         cout << "Palabras agregadas"<< endl;
     } else {
         // Muestra un mensaje de error si no se puede abrir el archivo
@@ -86,7 +86,7 @@ public:
     
 }
 
-    // Función auxiliar para agregar una palabra recursivamente
+    // Funciï¿½n auxiliar para agregar una palabra recursivamente
     NodoAVL* agregarPalabraRec(NodoAVL* nodo, const string& espanol, const string& ingles) {
         if (nodo == NULL) {
             return new NodoAVL(espanol, ingles);
@@ -98,7 +98,7 @@ public:
             nodo->derecho = agregarPalabraRec(nodo->derecho, espanol, ingles);
         } else {
             // Si la palabra ya existe, se puede manejar de acuerdo a los requerimientos
-            // Aquí simplemente se actualiza la palabra inglesa
+            // Aquï¿½ simplemente se actualiza la palabra inglesa
             nodo->palabraIngles = ingles;
             return nodo;
         }
@@ -107,7 +107,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && espanol < nodo->izquierdo->palabraEspanol) {
             return rotarDerecha(nodo);
         }
@@ -126,19 +126,19 @@ public:
         return nodo;
     }
 
-    // Función para obtener la altura de un nodo
+    // Funciï¿½n para obtener la altura de un nodo
     int altura(NodoAVL* nodo) {
         if (nodo == NULL) return 0;
         return nodo->altura;
     }
 
-    // Función para obtener el balance de un nodo
+    // Funciï¿½n para obtener el balance de un nodo
     int obtenerBalance(NodoAVL* nodo) {
         if (nodo == NULL) return 0;
         return altura(nodo->izquierdo) - altura(nodo->derecho);
     }
 
-    // Rotación simple a la derecha
+    // Rotaciï¿½n simple a la derecha
     NodoAVL* rotarDerecha(NodoAVL* y) {
         NodoAVL* x = y->izquierdo;
         NodoAVL* T2 = x->derecho;
@@ -152,7 +152,7 @@ public:
         return x;
     }
 
-    // Rotación simple a la izquierda
+    // Rotaciï¿½n simple a la izquierda
     NodoAVL* rotarIzquierda(NodoAVL* x) {
         NodoAVL* y = x->derecho;
         NodoAVL* T2 = y->izquierdo;
@@ -166,7 +166,7 @@ public:
         return y;
     }
 
-    // Función para traducir una palabra de español a inglés
+    // Funciï¿½n para traducir una palabra de espaï¿½ol a inglï¿½s
     string traducirEspanolIngles(const string& palabra) {
         NodoAVL* actual = raiz;
         while (actual) {
@@ -181,16 +181,16 @@ public:
         return "Palabra no encontrada";
     }
 
-    // Función para mostrar las palabras en orden (inorder traversal)
+    // Funciï¿½n para mostrar las palabras en orden (inorder traversal)
     void mostrarPalabras() {
         mostrarPalabrasRec(raiz);
     }
 
-    // Función auxiliar para mostrar las palabras en orden
+    // Funciï¿½n auxiliar para mostrar las palabras en orden
     void mostrarPalabrasRec(NodoAVL* nodo) {
         if (nodo != NULL) {
             mostrarPalabrasRec(nodo->izquierdo);
-            cout << "Español: " << nodo->palabraEspanol << ", Inglés: " << nodo->palabraIngles << endl;
+            cout << "Espaï¿½ol: " << nodo->palabraEspanol << ", Inglï¿½s: " << nodo->palabraIngles << endl;
             mostrarPalabrasRec(nodo->derecho);
         }
     }
@@ -242,7 +242,7 @@ NodoAVL* eliminarPalabraRec(NodoAVL* nodo, const string& espanol) {
 
     int balance = obtenerBalance(nodo);
 
-    // Casos de rotación
+    // Casos de rotaciï¿½n
     if (balance > 1 && obtenerBalance(nodo->izquierdo) >= 0) {
         return rotarDerecha(nodo);
     }
@@ -272,7 +272,7 @@ void mostrarArbol(NodoAVL* nodo, int nivel = 0) const {
 }
 };
 
-// Función para leer las palabras del archivo de texto y agregarlas al diccionario AVL
+// Funciï¿½n para leer las palabras del archivo de texto y agregarlas al diccionario AVL
 void leerPalabras(DiccionarioAVL& diccionario) {
     ifstream archivo("palabrasIngles.txt");
     if (archivo.is_open()) {
@@ -292,7 +292,7 @@ void leerPalabras(DiccionarioAVL& diccionario) {
         // Abre el archivo en modo de lectura
         ifstream archivo(rutaCompleta);
 
-        // Verifica si el archivo se abrió correctamente
+        // Verifica si el archivo se abriï¿½ correctamente
         if (archivo.is_open()) {
             string espanol, ingles;
             // Lee y muestra las palabras en el archivo
@@ -305,7 +305,7 @@ void leerPalabras(DiccionarioAVL& diccionario) {
             cerr << "Error al abrir el archivo: " << rutaCompleta << endl;
         }
     }
-// Función para eliminar una palabra y su traducción del archivo de usuario
+// Funciï¿½n para eliminar una palabra y su traducciï¿½n del archivo de usuario
 void eliminarPalabraUsuario(const string& rutaCarpeta, const string& nombreArchivo, const string& palabraEspanol) {
     // Construye la ruta completa del archivo
     string rutaCompleta = rutaCarpeta + nombreArchivo;
@@ -374,7 +374,7 @@ public:
         return raiz;
     }
 
-    // Función auxiliar para destruir el árbol
+    // Funciï¿½n auxiliar para destruir el ï¿½rbol
     void destruirArbol(NodoAVLalem* nodo) {
         if (nodo) {
             destruirArbol(nodo->izquierdo);
@@ -395,13 +395,13 @@ public:
     // Abre el archivo en modo de apertura para agregar al final
     ofstream archivo(rutaCompleta, ios::app);
 
-    // Verifica si el archivo se abrió correctamente
+    // Verifica si el archivo se abriï¿½ correctamente
     if (archivo.is_open()) {
         // Escribe las palabras en el archivo
         archivo << espanol << " " << aleman << endl;
-        // Cierra el archivo después de escribir
+        // Cierra el archivo despuï¿½s de escribir
         archivo.close();
-        // Muestra un mensaje de éxito
+        // Muestra un mensaje de ï¿½xito
         cout << "Palabras agregadas"<< endl;
     } else {
         // Muestra un mensaje de error si no se puede abrir el archivo
@@ -411,7 +411,7 @@ public:
     
 }
 
-    // Función auxiliar para agregar una palabra recursivamente
+    // Funciï¿½n auxiliar para agregar una palabra recursivamente
     NodoAVLalem* agregarPalabraRec(NodoAVLalem* nodo, const string& espanol, const string& aleman) {
         if (nodo == nullptr) {
             return new NodoAVLalem(espanol, aleman);
@@ -423,7 +423,7 @@ public:
             nodo->derecho = agregarPalabraRec(nodo->derecho, espanol, aleman);
         } else {
             // Si la palabra ya existe, se puede manejar de acuerdo a los requerimientos
-            // Aquí simplemente se actualiza la palabra alemana
+            // Aquï¿½ simplemente se actualiza la palabra alemana
             nodo->palabraAleman = aleman;
             return nodo;
         }
@@ -432,7 +432,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && espanol < nodo->izquierdo->palabraEspanol) {
             return rotarDerecha(nodo);
         }
@@ -451,19 +451,19 @@ public:
         return nodo;
     }
 
-    // Función para obtener la altura de un nodo
+    // Funciï¿½n para obtener la altura de un nodo
     int altura(NodoAVLalem* nodo) {
         if (nodo == nullptr) return 0;
         return nodo->altura;
     }
 
-    // Función para obtener el balance de un nodo
+    // Funciï¿½n para obtener el balance de un nodo
     int obtenerBalance(NodoAVLalem* nodo) {
         if (nodo == nullptr) return 0;
         return altura(nodo->izquierdo) - altura(nodo->derecho);
     }
 
-    // Rotación simple a la derecha
+    // Rotaciï¿½n simple a la derecha
     NodoAVLalem* rotarDerecha(NodoAVLalem* y) {
         NodoAVLalem* x = y->izquierdo;
         NodoAVLalem* T2 = x->derecho;
@@ -477,7 +477,7 @@ public:
         return x;
     }
 
-    // Rotación simple a la izquierda
+    // Rotaciï¿½n simple a la izquierda
     NodoAVLalem* rotarIzquierda(NodoAVLalem* x) {
         NodoAVLalem* y = x->derecho;
         NodoAVLalem* T2 = y->izquierdo;
@@ -491,7 +491,7 @@ public:
         return y;
     }
 
-    // Función para traducir una palabra de español a alemán
+    // Funciï¿½n para traducir una palabra de espaï¿½ol a alemï¿½n
     string traducirEspanolAleman(const string& palabra) {
         NodoAVLalem* actual = raiz;
         while (actual) {
@@ -506,26 +506,26 @@ public:
         return "Palabra no encontrada";
     }
 
-    // Función para mostrar las palabras en orden (inorder traversal)
+    // Funciï¿½n para mostrar las palabras en orden (inorder traversal)
     void mostrarPalabras() {
         mostrarPalabrasRec(raiz);
     }
 
-    // Función auxiliar para mostrar las palabras en orden
+    // Funciï¿½n auxiliar para mostrar las palabras en orden
     void mostrarPalabrasRec(NodoAVLalem* nodo) {
         if (nodo != nullptr) {
             mostrarPalabrasRec(nodo->izquierdo);
-            cout << "Español: " << nodo->palabraEspanol << ", Alemán: " << nodo->palabraAleman << endl;
+            cout << "Espaï¿½ol: " << nodo->palabraEspanol << ", Alemï¿½n: " << nodo->palabraAleman << endl;
             mostrarPalabrasRec(nodo->derecho);
         }
     }
 
-    // Función para eliminar una palabra del diccionario AVL
+    // Funciï¿½n para eliminar una palabra del diccionario AVL
     void eliminarPalabra(const string& espanol) {
         raiz = eliminarPalabraRec(raiz, espanol);
     }
 
-    // Función auxiliar para eliminar una palabra recursivamente
+    // Funciï¿½n auxiliar para eliminar una palabra recursivamente
     NodoAVLalem* eliminarPalabraRec(NodoAVLalem* nodo, const string& espanol) {
         if (nodo == nullptr) {
             return nodo;
@@ -570,7 +570,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && obtenerBalance(nodo->izquierdo) >= 0) {
             return rotarDerecha(nodo);
         }
@@ -589,7 +589,7 @@ public:
         return nodo;
     }
 
-    // Función para mostrar el árbol AVL (inorder traversal)
+    // Funciï¿½n para mostrar el ï¿½rbol AVL (inorder traversal)
     void mostrarArbol(NodoAVLalem* nodo, int nivel = 0) const {
         if (nodo) {
             mostrarArbol(nodo->derecho, nivel + 1);
@@ -602,7 +602,7 @@ public:
     }
 };
 
-// Función para leer las palabras del archivo de texto y agregarlas al diccionario AVL
+// Funciï¿½n para leer las palabras del archivo de texto y agregarlas al diccionario AVL
 void leerPalabras(DiccionarioAVLalem& diccionario) {
     ifstream archivo("palabrasAleman.txt");
     if (archivo.is_open()) {
@@ -617,7 +617,7 @@ void leerPalabras(DiccionarioAVLalem& diccionario) {
 }
 
 //FRANCES
-// Clase que representa un nodo en el diccionario AVL para palabras en francés
+// Clase que representa un nodo en el diccionario AVL para palabras en francï¿½s
 class NodoAVLFran {
 public:
     string palabraFrances;
@@ -632,7 +632,7 @@ public:
           izquierdo(nullptr), derecho(nullptr), altura(1) {}
 };
 
-// Clase que representa el diccionario AVL para palabras en francés
+// Clase que representa el diccionario AVL para palabras en francï¿½s
 class DiccionarioAVLFran {
 private:
     NodoAVLFran* raiz;
@@ -646,7 +646,7 @@ public:
         destruirArbol(raiz);
     }
 
-    // Función auxiliar para destruir el árbol
+    // Funciï¿½n auxiliar para destruir el ï¿½rbol
     void destruirArbol(NodoAVLFran* nodo) {
         if (nodo) {
             destruirArbol(nodo->izquierdo);
@@ -667,13 +667,13 @@ public:
     // Abre el archivo en modo de apertura para agregar al final
     ofstream archivo(rutaCompleta, ios::app);
 
-    // Verifica si el archivo se abrió correctamente
+    // Verifica si el archivo se abriï¿½ correctamente
     if (archivo.is_open()) {
         // Escribe las palabras en el archivo
         archivo << espanol << " " << palabraFrances << endl;
-        // Cierra el archivo después de escribir
+        // Cierra el archivo despuï¿½s de escribir
         archivo.close();
-        // Muestra un mensaje de éxito
+        // Muestra un mensaje de ï¿½xito
         cout << "Palabras agregadas"<< endl;
     } else {
         // Muestra un mensaje de error si no se puede abrir el archivo
@@ -683,7 +683,7 @@ public:
     
 }
 
-    // Función auxiliar para agregar una palabra recursivamente
+    // Funciï¿½n auxiliar para agregar una palabra recursivamente
     NodoAVLFran* agregarPalabraRec(NodoAVLFran* nodo, const string& palabraFrances, const string& palabraEspanol) {
         if (nodo == nullptr) {
             return new NodoAVLFran(palabraFrances, palabraEspanol);
@@ -695,7 +695,7 @@ public:
             nodo->derecho = agregarPalabraRec(nodo->derecho, palabraFrances, palabraEspanol);
         } else {
             // Si la palabra ya existe, se puede manejar de acuerdo a los requerimientos
-            // Aquí simplemente se actualiza la palabra en español
+            // Aquï¿½ simplemente se actualiza la palabra en espaï¿½ol
             nodo->palabraEspanol = palabraEspanol;
             return nodo;
         }
@@ -704,7 +704,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && palabraFrances < nodo->izquierdo->palabraFrances) {
             return rotarDerecha(nodo);
         }
@@ -723,19 +723,19 @@ public:
         return nodo;
     }
 
-    // Función para obtener la altura de un nodo
+    // Funciï¿½n para obtener la altura de un nodo
     int altura(NodoAVLFran* nodo) {
         if (nodo == nullptr) return 0;
         return nodo->altura;
     }
 
-    // Función para obtener el balance de un nodo
+    // Funciï¿½n para obtener el balance de un nodo
     int obtenerBalance(NodoAVLFran* nodo) {
         if (nodo == nullptr) return 0;
         return altura(nodo->izquierdo) - altura(nodo->derecho);
     }
 
-    // Rotación simple a la derecha
+    // Rotaciï¿½n simple a la derecha
     NodoAVLFran* rotarDerecha(NodoAVLFran* y) {
         NodoAVLFran* x = y->izquierdo;
         NodoAVLFran* T2 = x->derecho;
@@ -749,7 +749,7 @@ public:
         return x;
     }
 
-    // Rotación simple a la izquierda
+    // Rotaciï¿½n simple a la izquierda
     NodoAVLFran* rotarIzquierda(NodoAVLFran* x) {
         NodoAVLFran* y = x->derecho;
         NodoAVLFran* T2 = y->izquierdo;
@@ -763,7 +763,7 @@ public:
         return y;
     }
 
-    // Función para traducir una palabra de francés a español
+    // Funciï¿½n para traducir una palabra de francï¿½s a espaï¿½ol
     string traducirFrancesEspanol(const string& palabraFrances) {
         NodoAVLFran* actual = raiz;
         while (actual) {
@@ -778,26 +778,26 @@ public:
         return "Palabra no encontrada";
     }
 
-    // Función para mostrar las palabras en orden (inorder traversal)
+    // Funciï¿½n para mostrar las palabras en orden (inorder traversal)
     void mostrarPalabras() {
         mostrarPalabrasRec(raiz);
     }
 
-    // Función auxiliar para mostrar las palabras en orden
+    // Funciï¿½n auxiliar para mostrar las palabras en orden
     void mostrarPalabrasRec(NodoAVLFran* nodo) {
         if (nodo != nullptr) {
             mostrarPalabrasRec(nodo->izquierdo);
-            cout << "Francés: " << nodo->palabraFrances << ", Español: " << nodo->palabraEspanol << endl;
+            cout << "Francï¿½s: " << nodo->palabraFrances << ", Espaï¿½ol: " << nodo->palabraEspanol << endl;
             mostrarPalabrasRec(nodo->derecho);
         }
     }
 
-    // Función para eliminar una palabra del diccionario AVL
+    // Funciï¿½n para eliminar una palabra del diccionario AVL
     void eliminarPalabra(const string& palabraFrances) {
         raiz = eliminarPalabraRec(raiz, palabraFrances);
     }
 
-    // Función auxiliar para eliminar una palabra recursivamente
+    // Funciï¿½n auxiliar para eliminar una palabra recursivamente
     NodoAVLFran* eliminarPalabraRec(NodoAVLFran* nodo, const string& palabraFrances) {
         if (nodo == nullptr) {
             return nodo;
@@ -842,7 +842,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && obtenerBalance(nodo->izquierdo) >= 0) {
             return rotarDerecha(nodo);
         }
@@ -876,7 +876,7 @@ public:
 }
 };
 
-// Función para leer las palabras del archivo de texto y agregarlas al diccionario AVL
+// Funciï¿½n para leer las palabras del archivo de texto y agregarlas al diccionario AVL
 void leerPalabras(DiccionarioAVLFran& diccionario) {
     ifstream archivo("palabrasFrances.txt");
     if (archivo.is_open()) {
@@ -892,7 +892,7 @@ void leerPalabras(DiccionarioAVLFran& diccionario) {
 
 
 //ITALIANO
-// Clase que representa un nodo en un árbol AVL para palabras en italiano
+// Clase que representa un nodo en un ï¿½rbol AVL para palabras en italiano
 class NodoAVLItal {
 public:
     string palabraItaliana;
@@ -919,7 +919,7 @@ public:
         destruirArbol(raiz);
     }
 
-    // Función para destruir el árbol
+    // Funciï¿½n para destruir el ï¿½rbol
     void destruirArbol(NodoAVLItal* nodo) {
         if (nodo) {
             destruirArbol(nodo->izquierdo);
@@ -928,7 +928,7 @@ public:
         }
     }
 
-    // Función para agregar una palabra al diccionario AVL
+    // Funciï¿½n para agregar una palabra al diccionario AVL
     void agregarPalabra(const string& italiano, const string& espanol) {
         raiz = agregarPalabraRec(raiz, italiano, espanol);
     }
@@ -941,13 +941,13 @@ public:
     // Abre el archivo en modo de apertura para agregar al final
     ofstream archivo(rutaCompleta, ios::app);
 
-    // Verifica si el archivo se abrió correctamente
+    // Verifica si el archivo se abriï¿½ correctamente
     if (archivo.is_open()) {
         // Escribe las palabras en el archivo
         archivo << espanol << " " << italiano << endl;
-        // Cierra el archivo después de escribir
+        // Cierra el archivo despuï¿½s de escribir
         archivo.close();
-        // Muestra un mensaje de éxito
+        // Muestra un mensaje de ï¿½xito
         cout << "Palabras agregadas"<< endl;
     } else {
         // Muestra un mensaje de error si no se puede abrir el archivo
@@ -957,7 +957,7 @@ public:
     
 }
 
-    // Función auxiliar para agregar una palabra recursivamente
+    // Funciï¿½n auxiliar para agregar una palabra recursivamente
     NodoAVLItal* agregarPalabraRec(NodoAVLItal* nodo, const string& italiano, const string& espanol) {
         if (nodo == nullptr) {
             return new NodoAVLItal(italiano, espanol);
@@ -969,7 +969,7 @@ public:
             nodo->derecho = agregarPalabraRec(nodo->derecho, italiano, espanol);
         } else {
             // La palabra ya existe, se puede manejar de acuerdo a los requerimientos
-            // Aquí simplemente se actualiza la palabra española
+            // Aquï¿½ simplemente se actualiza la palabra espaï¿½ola
             nodo->palabraEspanola = espanol;
             return nodo;
         }
@@ -978,7 +978,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && italiano < nodo->izquierdo->palabraItaliana) {
             return rotarDerecha(nodo);
         }
@@ -997,19 +997,19 @@ public:
         return nodo;
     }
 
-    // Función para obtener la altura de un nodo
+    // Funciï¿½n para obtener la altura de un nodo
     int altura(NodoAVLItal* nodo) {
         if (nodo == nullptr) return 0;
         return nodo->altura;
     }
 
-    // Función para obtener el balance de un nodo
+    // Funciï¿½n para obtener el balance de un nodo
     int obtenerBalance(NodoAVLItal* nodo) {
         if (nodo == nullptr) return 0;
         return altura(nodo->izquierdo) - altura(nodo->derecho);
     }
 
-    // Rotación simple a la derecha
+    // Rotaciï¿½n simple a la derecha
     NodoAVLItal* rotarDerecha(NodoAVLItal* y) {
         NodoAVLItal* x = y->izquierdo;
         NodoAVLItal* T2 = x->derecho;
@@ -1023,7 +1023,7 @@ public:
         return x;
     }
 
-    // Rotación simple a la izquierda
+    // Rotaciï¿½n simple a la izquierda
     NodoAVLItal* rotarIzquierda(NodoAVLItal* x) {
         NodoAVLItal* y = x->derecho;
         NodoAVLItal* T2 = y->izquierdo;
@@ -1037,7 +1037,7 @@ public:
         return y;
     }
 
-    // Función para traducir una palabra de italiano a español
+    // Funciï¿½n para traducir una palabra de italiano a espaï¿½ol
     string traducirItalianoEspanol(const string& palabra) {
         NodoAVLItal* actual = raiz;
         while (actual) {
@@ -1052,26 +1052,26 @@ public:
         return "Palabra no encontrada";
     }
 
-    // Función para mostrar las palabras en orden (inorder traversal)
+    // Funciï¿½n para mostrar las palabras en orden (inorder traversal)
     void mostrarPalabras() {
         mostrarPalabrasRec(raiz);
     }
 
-    // Función auxiliar para mostrar las palabras en orden
+    // Funciï¿½n auxiliar para mostrar las palabras en orden
     void mostrarPalabrasRec(NodoAVLItal* nodo) {
         if (nodo != nullptr) {
             mostrarPalabrasRec(nodo->izquierdo);
-            cout << "Italiano: " << nodo->palabraItaliana << ", Español: " << nodo->palabraEspanola << endl;
+            cout << "Italiano: " << nodo->palabraItaliana << ", Espaï¿½ol: " << nodo->palabraEspanola << endl;
             mostrarPalabrasRec(nodo->derecho);
         }
     }
 
-    // Función para eliminar una palabra del diccionario AVL
+    // Funciï¿½n para eliminar una palabra del diccionario AVL
     void eliminarPalabra(const string& italiano) {
         raiz = eliminarPalabraRec(raiz, italiano);
     }
 
-    // Función auxiliar para eliminar una palabra recursivamente
+    // Funciï¿½n auxiliar para eliminar una palabra recursivamente
     NodoAVLItal* eliminarPalabraRec(NodoAVLItal* nodo, const string& italiano) {
         if (nodo == nullptr) {
             return nodo;
@@ -1116,7 +1116,7 @@ public:
 
         int balance = obtenerBalance(nodo);
 
-        // Casos de rotación
+        // Casos de rotaciï¿½n
         if (balance > 1 && obtenerBalance(nodo->izquierdo) >= 0) {
             return rotarDerecha(nodo);
         }
@@ -1150,7 +1150,7 @@ public:
 }
 };
 
-// Función para leer las palabras del archivo de texto y agregarlas al diccionario AVL
+// Funciï¿½n para leer las palabras del archivo de texto y agregarlas al diccionario AVL
 void leerPalabras(DiccionarioAVLItal& diccionario) {
     ifstream archivo("palabrasItaliano.txt");
     if (archivo.is_open()) {
@@ -1164,23 +1164,23 @@ void leerPalabras(DiccionarioAVLItal& diccionario) {
     }
 }
 
-// Función para encriptar una palabra según las reglas proporcionadas
+// Funciï¿½n para encriptar una palabra segï¿½n las reglas proporcionadas
 string encriptarPalabra(const string& palabra, const unordered_map<string, string>& reglas) {
     string encriptada;
     for (size_t i = 0; i < palabra.length(); ++i) {
-        // Verificar si la palabra está en las reglas de encriptación
+        // Verificar si la palabra estï¿½ en las reglas de encriptaciï¿½n
         string subpalabra = palabra.substr(i, 1); // Obtener la subpalabra de longitud 1
         if (reglas.find(subpalabra) != reglas.end()) {
             encriptada += reglas.at(subpalabra);
         } else {
-            encriptada += subpalabra; // Si la palabra no está en las reglas, mantenerla sin cambios
+            encriptada += subpalabra; // Si la palabra no estï¿½ en las reglas, mantenerla sin cambios
         }
     }
     return encriptada;
 }
 
 
-// Función para encriptar un archivo de texto según las reglas proporcionadas
+// Funciï¿½n para encriptar un archivo de texto segï¿½n las reglas proporcionadas
 void encriptarArchivo(const string& nombreArchivoEntrada, const string& nombreArchivoSalida, const unordered_map<string, string>& reglas) {
     ifstream archivoEntrada(nombreArchivoEntrada);
     ofstream archivoSalida(nombreArchivoSalida);
@@ -1204,10 +1204,10 @@ void encriptarArchivo(const string& nombreArchivoEntrada, const string& nombreAr
 
 
 string verificarUsuario() {
-// Declaración de variables locales
-string usuario, contrasena;  // Almacenan el usuario y la contraseña ingresados
+// Declaraciï¿½n de variables locales
+string usuario, contrasena;  // Almacenan el usuario y la contraseï¿½a ingresados
 int contador = 0;  // Contador de intentos
-bool encontrado = false;  // Indica si se encontró el usuario y la contraseña correctos
+bool encontrado = false;  // Indica si se encontrï¿½ el usuario y la contraseï¿½a correctos
 
 while (contador < 3 && !encontrado) {
 
@@ -1216,7 +1216,7 @@ while (contador < 3 && !encontrado) {
     cout <<"\t\t\t| INGRESO DE USUARIO |"<<endl;
     cout <<"\t\t\t----------------------"<<endl;
 
-    cout <<"\n\t¡¡¡Advertencia: Solo tienes permitido 3 intentos!!!"<<endl;
+    cout <<"\n\tï¿½ï¿½ï¿½Advertencia: Solo tienes permitido 3 intentos!!!"<<endl;
     cout <<"\t---------------------------------------------------"<<endl;
 
     cout << "\t\t\t\nIngrese el nombre de usuario:         ";
@@ -1225,7 +1225,7 @@ while (contador < 3 && !encontrado) {
     char caracter;
     caracter = getch();
 
-    // Ocultar la contraseña ingresada por el usuario
+    // Ocultar la contraseï¿½a ingresada por el usuario
     contrasena = "";
     while (caracter != 13){
         if(caracter != 8)
@@ -1242,15 +1242,15 @@ while (contador < 3 && !encontrado) {
         caracter = getch();
     }
 
-    // Abrir el archivo de usuarios y contraseñas
+    // Abrir el archivo de usuarios y contraseï¿½as
     ifstream file;
     file.open("Usuarios.txt", ios::in);
 
-    // Verificar si el archivo se abrió correctamente
+    // Verificar si el archivo se abriï¿½ correctamente
     if (!file) {
         cout << "No se pudo abrir el archivo." << endl;
         file.close();
-        return false;
+        return " ";
     }
 
     // Buscar el usuario en el archivo
@@ -1264,7 +1264,7 @@ while (contador < 3 && !encontrado) {
     }
     file.close();
 
-    // Si no se encontró el usuario, se incrementa el contador
+    // Si no se encontrï¿½ el usuario, se incrementa el contador
     if (!encontrado) {
         cout << "\n\tUSUARIO Y/O PASSWORD INCORRECTOS" << endl;
         cout << "\n\tPerdio un intento, Intente de nuevo" << endl;
@@ -1273,15 +1273,16 @@ while (contador < 3 && !encontrado) {
     }
 }
 
-// Si se encontró el usuario, se retorna true
+// Si se encontrï¿½ el usuario, se retorna true
 if (encontrado) {
     return usuario;
 } else {
     cout << "\n\tPERDIO LOS 3 INTENTOS" << endl;
     cout << "\n\tNO PODRA INGRESAR MAS INTENTOS" << endl;
-    return false;
+    return " ";
 }
 }
+
 bool crearCarpetaUsuario(const std::string& nombreCarpeta) {
     try {
         // Construir la ruta completa de la carpeta
@@ -1304,7 +1305,7 @@ void palabraHistorial(string palabra) {
     ofstream archivo("palabrasHistorial.txt", std::ios::app); // Abrir el archivo en modo "append"
     
     if (archivo.is_open()) {
-        archivo << palabra << "\n"; // Escribir la palabra en el archivo seguida de un salto de línea
+        archivo << palabra << "\n"; // Escribir la palabra en el archivo seguida de un salto de lï¿½nea
         archivo.close(); // Cerrar el archivo
         cout << "La palabra '" << palabra << "' se ha agregado al archivo." <<endl;
     } else {
@@ -1313,15 +1314,15 @@ void palabraHistorial(string palabra) {
 }
 void obtenerPalabrasRepetidas() {
     ifstream archivo("palabrasHistorial.txt"); // Abrir el archivo en modo lectura
-    unordered_set<string> palabras; // Contenedor para almacenar las palabras únicas
+    unordered_set<string> palabras; // Contenedor para almacenar las palabras ï¿½nicas
     unordered_set<string> palabrasReportadas; // Contenedor para almacenar las palabras ya reportadas
     string palabra;
     
     if (archivo.is_open()) {
-        while (getline(archivo, palabra)) { // Leer cada línea del archivo
-            if (palabras.find(palabra) == palabras.end()) { // Si la palabra no está en el contenedor
+        while (getline(archivo, palabra)) { // Leer cada lï¿½nea del archivo
+            if (palabras.find(palabra) == palabras.end()) { // Si la palabra no estï¿½ en el contenedor
                 palabras.insert(palabra); // Agregar la palabra al contenedor
-            } else if (palabrasReportadas.find(palabra) == palabrasReportadas.end()) { // Si la palabra no ha sido reportada aún
+            } else if (palabrasReportadas.find(palabra) == palabrasReportadas.end()) { // Si la palabra no ha sido reportada aï¿½n
                 cout << "La palabra '" << palabra << "' es una de las mas buscadas." << endl;
                 palabrasReportadas.insert(palabra); // Marcar la palabra como reportada
             }
@@ -1341,7 +1342,7 @@ void traductorEspanolIngles(){
     
 
     cout <<"\t\t\t----------------------------------"<<endl;
-    cout <<"\t\t\t|    Traductor Español a Ingles     |"<<endl;
+    cout <<"\t\t\t|    Traductor Espaï¿½ol a Ingles     |"<<endl;
     cout <<"\t\t\t----------------------------------"<<endl;
 	cout<<"\t\t\t 1. Traducir Palabras"<<endl;
 	cout<<"\t\t\t 2. Agregar una Nueva Palabra"<<endl;
@@ -1404,16 +1405,16 @@ void traductorEspanolIngles(){
             char opcion;
 
             do {
-                cout << "Ingrese una palabra en español: ";
+                cout << "Ingrese una palabra en espaï¿½ol: ";
                 cin >> espanol;
 
-                cout << "Ingrese la traducción al ingles: ";
+                cout << "Ingrese la traducciï¿½n al ingles: ";
                 cin >> ingles;
 
                 diccionario.agregarPalabrasIngles (rutaCarpeta, nombreArchivo, espanol, ingles);
                 //diccionario.agregarPalabraRec(diccionario.raiz, espanol, ingles);
 
-                cout << "¿Desea agregar otra palabra? (s/n): ";
+                cout << "ï¿½Desea agregar otra palabra? (s/n): ";
                 cin >> opcion;
                } while (opcion == 's' || opcion == 'S');
   
@@ -1438,7 +1439,7 @@ void traductorEspanolIngles(){
 		DiccionarioAVL diccionario;
 		leerPalabras(diccionario);
 		string palabra;
-        cout << "Ingrese una palabra en español a eliminar: ";
+        cout << "Ingrese una palabra en espaï¿½ol a eliminar: ";
         cin >> palabra;
         diccionario.eliminarPalabra(palabra);
         string rutaCarpeta = "C:\\Users\\HP\\OneDrive\\Desktop\\Programacion 3\\prototipoAVL\\"+usuarioAutenticado+"\\";
@@ -1462,7 +1463,7 @@ void traductorEspanolAleman(){
     system("cls");
 
     cout <<"\t\t\t----------------------------------"<<endl;
-    cout <<"\t\t\t|    Traductor Español a Aleman     |"<<endl;
+    cout <<"\t\t\t|    Traductor Espaï¿½ol a Aleman     |"<<endl;
     cout <<"\t\t\t----------------------------------"<<endl;
 	cout<<"\t\t\t 1. Traducir Palabras"<<endl;
 	cout<<"\t\t\t 2. Agregar una Nueva Palabra"<<endl;
@@ -1520,16 +1521,16 @@ void traductorEspanolAleman(){
             char opcion;
 
             do {
-                cout << "Ingrese una palabra en español: ";
+                cout << "Ingrese una palabra en espaï¿½ol: ";
                 cin >> espanol;
 
-                cout << "Ingrese la traducción al Aleman: ";
+                cout << "Ingrese la traducciï¿½n al Aleman: ";
                 cin >> aleman;
 
                 diccionario.agregarPalabras(rutaCarpeta, nombreArchivo, espanol, aleman);
                 //diccionario.agregarPalabraRec(diccionario.raiz, espanol, ingles);
 
-                cout << "¿Desea agregar otra palabra? (s/n): ";
+                cout << "ï¿½Desea agregar otra palabra? (s/n): ";
                 cin >> opcion;
                } while (opcion == 's' || opcion == 'S');
   
@@ -1554,7 +1555,7 @@ case 3:
 		DiccionarioAVLalem diccionario;
 		leerPalabras(diccionario);
 		string palabra;
-        cout << "Ingrese una palabra en español a eliminar: ";
+        cout << "Ingrese una palabra en espaï¿½ol a eliminar: ";
         cin >> palabra;
         diccionario.eliminarPalabra(palabra);
         string rutaCarpeta = "C:\\Users\\HP\\OneDrive\\Desktop\\Programacion 3\\prototipoAVL\\"+usuarioAutenticado+"\\";
@@ -1578,7 +1579,7 @@ void traductorEspanolFrances(){
     system("cls");
 
     cout <<"\t\t\t----------------------------------"<<endl;
-    cout <<"\t\t\t|    Traductor Español a Frances     |"<<endl;
+    cout <<"\t\t\t|    Traductor Espaï¿½ol a Frances     |"<<endl;
     cout <<"\t\t\t----------------------------------"<<endl;
 	cout<<"\t\t\t 1. Traducir Palabras"<<endl;
 	cout<<"\t\t\t 2. Agregar una Nueva Palabra"<<endl;
@@ -1636,16 +1637,16 @@ void traductorEspanolFrances(){
             char opcion;
 
             do {
-                cout << "Ingrese una palabra en español: ";
+                cout << "Ingrese una palabra en espaï¿½ol: ";
                 cin >> espanol;
 
-                cout << "Ingrese la traducción al Frances: ";
+                cout << "Ingrese la traducciï¿½n al Frances: ";
                 cin >> frances;
 
                 diccionario.agregarPalabras(rutaCarpeta, nombreArchivo, espanol, frances);
                 //diccionario.agregarPalabraRec(diccionario.raiz, espanol, ingles);
 
-                cout << "¿Desea agregar otra palabra? (s/n): ";
+                cout << "ï¿½Desea agregar otra palabra? (s/n): ";
                 cin >> opcion;
                } while (opcion == 's' || opcion == 'S');
   
@@ -1670,7 +1671,7 @@ void traductorEspanolFrances(){
 		DiccionarioAVLFran  diccionario;
 		leerPalabras(diccionario);
 		string palabra;
-        cout << "Ingrese una palabra en español a eliminar: ";
+        cout << "Ingrese una palabra en espaï¿½ol a eliminar: ";
         cin >> palabra;
         diccionario.eliminarPalabra(palabra);
         string rutaCarpeta = "C:\\Users\\HP\\OneDrive\\Desktop\\Programacion 3\\prototipoAVL\\"+usuarioAutenticado+"\\";
@@ -1694,7 +1695,7 @@ void traductorEspanolItaliano(){
     system("cls");
 
     cout <<"\t\t\t----------------------------------"<<endl;
-    cout <<"\t\t\t|    Traductor Español a Italiano     |"<<endl;
+    cout <<"\t\t\t|    Traductor Espaï¿½ol a Italiano     |"<<endl;
     cout <<"\t\t\t----------------------------------"<<endl;
 	cout<<"\t\t\t 1. Traducir Palabras"<<endl;
 	cout<<"\t\t\t 2. Agregar una Nueva Palabra"<<endl;
@@ -1754,16 +1755,16 @@ void traductorEspanolItaliano(){
             char opcion;
 
             do {
-                cout << "Ingrese una palabra en español: ";
+                cout << "Ingrese una palabra en espaï¿½ol: ";
                 cin >> espanol;
 
-                cout << "Ingrese la traducción al Italiano: ";
+                cout << "Ingrese la traducciï¿½n al Italiano: ";
                 cin >> Italiano;
 
                 diccionario.agregarPalabras(rutaCarpeta, nombreArchivo, espanol, Italiano);
                 //diccionario.agregarPalabraRec(diccionario.raiz, espanol, ingles);
 
-                cout << "¿Desea agregar otra palabra? (s/n): ";
+                cout << "ï¿½Desea agregar otra palabra? (s/n): ";
                 cin >> opcion;
                } while (opcion == 's' || opcion == 'S');
   
@@ -1788,7 +1789,7 @@ void traductorEspanolItaliano(){
 		DiccionarioAVLItal diccionario;
 		leerPalabras(diccionario);
 		string palabra;
-        cout << "Ingrese una palabra en español a eliminar: ";
+        cout << "Ingrese una palabra en espaï¿½ol a eliminar: ";
         cin >> palabra;
         diccionario.eliminarPalabra(palabra);
         string rutaCarpeta = "C:\\Users\\HP\\OneDrive\\Desktop\\Programacion 3\\prototipoAVL\\"+usuarioAutenticado+"\\";
@@ -1810,32 +1811,32 @@ void ingresarUsuarios(){
     system("cls");
     fstream file;//objeto "fstream" para manejar archivos
 
-    // Declaración de variables
+    // Declaraciï¿½n de variables
     string usuario, contrasena;
 
-    // Imprime mensaje y solicita al usuario que ingrese el nombre de usuario y la contraseña
+    // Imprime mensaje y solicita al usuario que ingrese el nombre de usuario y la contraseï¿½a
     cout<<"\n-------------------------------------------------Agregar Usuarios al Sistema--------------------------------------------"<<endl;
     cout << "\t\t\t\nIngrese el nombre de usuario:         ";
     cin >> usuario;
     cout << "\t\t\t\nIngrese la contrasena:         ";
 
-// Inicia la entrada de caracteres uno por uno, ocultando la contraseña con asteriscos
+// Inicia la entrada de caracteres uno por uno, ocultando la contraseï¿½a con asteriscos
 char caracter;
 caracter = getch();
 contrasena = "";
 
     string nombreCarpeta = usuario;
     crearCarpetaUsuario(nombreCarpeta);
-while (caracter != 13){ // El bucle se ejecuta hasta que el usuario presiona la tecla "Enter" (código ASCII 13)
-    if(caracter != 8) // Si el caracter ingresado no es "Backspace" (código ASCII 8)
+while (caracter != 13){ // El bucle se ejecuta hasta que el usuario presiona la tecla "Enter" (cï¿½digo ASCII 13)
+    if(caracter != 8) // Si el caracter ingresado no es "Backspace" (cï¿½digo ASCII 8)
     {
         contrasena.push_back(caracter); // Agrega el caracter ingresado al final de la cadena "contrasena"
         cout<< "*"; // Imprime un asterisco en la consola
     }else{ // Si el caracter ingresado es "Backspace"
         if(contrasena.length()>0) // Si la cadena "contrasena" tiene al menos un caracter
         {
-            cout<<"\b \b"; // Borra el último caracter ingresado de la consola (mueve el cursor una posición a la izquierda, imprime un espacio en blanco y mueve el cursor de nuevo a la izquierda)
-            contrasena = contrasena.substr(0, contrasena.length() - 1); // Elimina el último caracter ingresado de la cadena "contrasena"
+            cout<<"\b \b"; // Borra el ï¿½ltimo caracter ingresado de la consola (mueve el cursor una posiciï¿½n a la izquierda, imprime un espacio en blanco y mueve el cursor de nuevo a la izquierda)
+            contrasena = contrasena.substr(0, contrasena.length() - 1); // Elimina el ï¿½ltimo caracter ingresado de la cadena "contrasena"
         }
     }
     caracter = getch(); // Lee el siguiente caracter ingresado por el usuario
@@ -1850,14 +1851,14 @@ file<<std::left<<std::setw(15)<< usuario <<std::left<<std::setw(15)<< contrasena
 // Cierra el archivo
 file.close();
 
-// Imprime mensaje de éxito
+// Imprime mensaje de ï¿½xito
 cout << "\t\t\t\nUsuario registrado exitosamente.";
 }
 void desplegarUsurios()
 {
     system("cls"); // limpia la pantalla de la consola
 	fstream file; // crea un objeto de archivo de la biblioteca fstream
-	int total=0; // inicializa una variable para contar el número de usuarios
+	int total=0; // inicializa una variable para contar el nï¿½mero de usuarios
 
 	// Imprime el encabezado para la tabla de usuarios registrados
 	cout<<"\n-------------------------Tabla de Usuarios Registrados-------------------------"<<endl;
@@ -1865,7 +1866,7 @@ void desplegarUsurios()
 	file.open("Usuarios.txt",ios::in); // abre el archivo "Usuarios1.txt" en modo lectura
 	if(!file) // si no se pudo abrir el archivo
 	{
-		cout<<"\n\t\t\tNo hay información..."; // muestra un mensaje de error
+		cout<<"\n\t\t\tNo hay informaciï¿½n..."; // muestra un mensaje de error
 		file.close(); // cierra el archivo
 	}
 	else // si se pudo abrir el archivo
@@ -1878,11 +1879,11 @@ void desplegarUsurios()
 		{
 			total++; // incrementa el contador de usuarios
 			cout<<"\t\t\t Nombre de usuario: "<<usuario<<endl; // muestra el nombre del usuario
-			cout<<"\t\t\t Contrasena del usuario: "<<contrasena<<endl; // muestra la contraseña del usuario
+			cout<<"\t\t\t Contrasena del usuario: "<<contrasena<<endl; // muestra la contraseï¿½a del usuario
 			file >> usuario >> contrasena; // lee el siguiente usuario del archivo
 		}
 
-		if(total==0) // si no se encontró ningún usuario en el archivo
+		if(total==0) // si no se encontrï¿½ ningï¿½n usuario en el archivo
 		{
 			cout<<"\n\t\t\tNo hay informacion..."; // muestra un mensaje de error
 		}
@@ -1891,44 +1892,44 @@ void desplegarUsurios()
 	file.close(); // cierra el archivo
 }
 void menuUsuarios(){
-    int choice; // Se declara la variable choice para almacenar la opción elegida por el usuario
+    int choice; // Se declara la variable choice para almacenar la opciï¿½n elegida por el usuario
 	char x; // Se declara la variable x para almacenar la respuesta del usuario al preguntar si quiere agregar otra persona
 	do
     {
 	system("cls"); // Se limpia la pantalla
-    cout <<"\t\t\t------------------------------"<<endl; // Se imprime un mensaje de bienvenida al menú de usuarios
+    cout <<"\t\t\t------------------------------"<<endl; // Se imprime un mensaje de bienvenida al menï¿½ de usuarios
     cout <<"\t\t\t |MENU DE PROCESO DE USUARIOS|"<<endl;
     cout <<"\t\t\t------------------------------"<<endl;
-    cout<<"\t\t\t 1. Ingresar un Usuario"<<endl; // Se imprime la opción para modificar usuarios
+    cout<<"\t\t\t 1. Ingresar un Usuario"<<endl; // Se imprime la opciï¿½n para modificar usuarios
 	cout<<"\t\t\t 2. Desplegar Usuarios"<<endl;
-	cout<<"\t\t\t 3. Exit"<<endl; // Se imprime la opción para salir
+	cout<<"\t\t\t 3. Exit"<<endl; // Se imprime la opciï¿½n para salir
 
 	cout<<"\t\t\t-------------------------------"<<endl;
-	cout<<"\t\t\tOpcion a escoger:[1/2/3]"<<endl; // Se imprime una línea indicando que se debe elegir una opción
+	cout<<"\t\t\tOpcion a escoger:[1/2/3]"<<endl; // Se imprime una lï¿½nea indicando que se debe elegir una opciï¿½n
 	cout<<"\t\t\t-------------------------------"<<endl;
 	cout<<"Ingresa tu Opcion: ";
-    cin>>choice; // Se lee la opción elegida por el usuario
+    cin>>choice; // Se lee la opciï¿½n elegida por el usuario
 
-    switch(choice) // Se utiliza un switch para ejecutar el código correspondiente a la opción elegida por el usuario
+    switch(choice) // Se utiliza un switch para ejecutar el cï¿½digo correspondiente a la opciï¿½n elegida por el usuario
     {
     case 1:
-         do // Se utiliza un do-while para permitir al usuario agregar más de una persona
+         do // Se utiliza un do-while para permitir al usuario agregar mï¿½s de una persona
     	{
-    		ingresarUsuarios(); // Se llama al método para ingresar nuevos usuarios
+    		ingresarUsuarios(); // Se llama al mï¿½todo para ingresar nuevos usuarios
     		cout<<"\n\t\t\t Agrega otra persona(Y,N): ";
     		cin>>x; // Se pregunta al usuario si desea agregar otra persona
 		}while(x=='y'||x=='Y'); // Se repite el ciclo mientras la respuesta del usuario sea afirmativa
 		break;
     case 2:
-		desplegarUsurios(); // Se llama al método para modificar usuarios
+		desplegarUsurios(); // Se llama al mï¿½todo para modificar usuarios
 		break;
     case 3:
 	    return;
 	default:
-		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez.."; // Se imprime un mensaje de error si la opción elegida es inválida
+		cout<<"\n\t\t\t Opcion invalida...Por favor prueba otra vez.."; // Se imprime un mensaje de error si la opciï¿½n elegida es invï¿½lida
 	}
 	getch(); // Se espera a que el usuario presione una tecla para continuar
-    }while(choice!= 3); // Se repite el ciclo mientras la opción elegida por el usuario sea diferente a 6 (salida del menú)
+    }while(choice!= 3); // Se repite el ciclo mientras la opciï¿½n elegida por el usuario sea diferente a 6 (salida del menï¿½)
 }
 
 
@@ -1950,7 +1951,7 @@ void menuTraductor(){
         {"l", "m9"},
         {"m", "m10"},
         {"n", "m11"},
-        {"ñ", "m12"},
+        {"ï¿½", "m12"},
         {"p", "m13"},
         {"q", "m14"},
         {"r", "m15"},
@@ -1971,7 +1972,7 @@ void menuTraductor(){
         {"L", "g9"},
         {"M", "g10"},
         {"N", "g11"},
-        {"Ñ", "g12"},
+        {"ï¿½", "g12"},
         {"P", "g13"},
         {"Q", "g14"},
         {"R", "g15"},
@@ -2061,7 +2062,7 @@ int main() {
         {"l", "m9"},
         {"m", "m10"},
         {"n", "m11"},
-        {"ñ", "m12"},
+        {"ï¿½", "m12"},
         {"p", "m13"},
         {"q", "m14"},
         {"r", "m15"},
@@ -2082,7 +2083,7 @@ int main() {
         {"L", "g9"},
         {"M", "g10"},
         {"N", "g11"},
-        {"Ñ", "g12"},
+        {"ï¿½", "g12"},
         {"P", "g13"},
         {"Q", "g14"},
         {"R", "g15"},
