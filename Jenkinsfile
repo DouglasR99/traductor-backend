@@ -10,7 +10,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'g++ src/*.cpp -o bin\\traductor.exe'
+                bat 'g++ ProyectoFinal/*.cpp -o bin\\traductor.exe'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('sonarqube-local') {
-                    bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=traductor-backend -Dsonar.sources=src"
+                    bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=traductor-backend -Dsonar.sources=ProyectoFinal"
                 }
             }
         }
