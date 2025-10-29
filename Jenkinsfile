@@ -10,7 +10,11 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'g++ ProyectoFinal/*.cpp -o bin\\traductor.exe'
+                // Crear la carpeta bin si no existe
+                bat 'if not exist bin mkdir bin'
+                
+                // Compilar todos los .cpp en ProyectoFinal
+                bat 'g++ ProyectoFinal\\*.cpp -o bin\\traductor.exe'
             }
         }
 
