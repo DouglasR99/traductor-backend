@@ -14,7 +14,8 @@ pipeline {
                 bat 'if not exist bin mkdir bin'
                 
                 // Compilar todos los .cpp en ProyectoFinal
-                bat 'g++ ProyectoFinal\\*.cpp -o bin\\traductor.exe'
+              bat 'g++ ProyectoFinal\\main.cpp ProyectoFinal\\funciones.cpp ProyectoFinal\\utils.cpp -o bin\\traductor.exe'
+
             }
         }
 
