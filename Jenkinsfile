@@ -14,7 +14,7 @@ pipeline {
                 bat 'if not exist bin mkdir bin'
                 
                 // Compilar todos los .cpp en ProyectoFinal
-              bat 'g++ ProyectoFinal\\main.cpp ProyectoFinal\\funciones.cpp ProyectoFinal\\utils.cpp -o bin\\traductor.exe'
+              bat 'g++ ProyectoFinal\\prototipoAVL\\main.cpp -o bin\\traductor.exe -lwinmm'
 
             }
         }
@@ -25,7 +25,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('sonarqube-local') {
-                    bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=traductor-backend -Dsonar.sources=ProyectoFinal"
+                    bat "${scannerHome}\\bin\\sonar-scanner.bat -Dsonar.projectKey=traductor-backend -Dsonar.sources=ProyectoFinal\\prototipoAVL -Dsonar.language=cpp -Dsonar.login=squ_79195606cfbe4c76cbe0f91260ff331f36418b73"
                 }
             }
         }
